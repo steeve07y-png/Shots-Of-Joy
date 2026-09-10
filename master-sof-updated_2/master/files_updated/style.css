@@ -1,0 +1,2349 @@
+/* ==========================================================================
+   SHOTS OF JOY — STYLESHEET
+   A handcrafted editorial gifting site. Table of contents:
+     1.  Custom properties & reset
+     2.  Paper texture & base typography
+     3.  Shared utility classes (eyebrow, buttons, links, sections)
+     4.  Header & navigation
+     5.  Hero
+     6.  Services (circular icons)
+     7.  Featured collection (asymmetrical rows)
+     8.  About / our story
+     9.  Why Shots of Joy (cards)
+     10. Gift categories
+     11. Testimonial
+     12. Journal teaser
+     13. Footer
+     14. Animations
+     15. Responsive breakpoints
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. CUSTOM PROPERTIES & RESET
+   -------------------------------------------------------------------------- */
+
+:root {
+    --ivory: #f8f5ee;
+    --beige: #ede7db;
+
+    --sage: #c9d0bf;
+    --terracotta: #b85c38;
+    --forest: #50634e;
+    --brown: #40362f;
+    --midnight-blue: #181847;
+
+    --font-brush: 'Caveat', cursive;
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Jost', sans-serif;
+
+    --max-width: 1240px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap');
+
+:root {
+    --cream: #FBF6EC;
+    --coral: #E8542E;
+    --gold: #F2B705;
+    --ink: #1B3B36;
+    --blush: #F6D9C4;
+    --charcoal: #2A2622;
+}
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--cream);
+    font-family: "Inter", sans-serif;
+    color: var(--charcoal);
+    overflow-x: hidden;
+    /* a long unbroken word must wrap rather than widen the page */
+    overflow-wrap: break-word;
+}
+
+.page {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(20px, 3vw, 32px) clamp(16px, 3.4vw, 40px) clamp(48px, 8vw, 96px);
+    position: relative;
+}
+
+/* NAV */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding-bottom: 56px;
+}
+
+.logo-mark {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 18px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.logo-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--coral);
+    display: inline-block;
+}
+
+nav .links {
+    display: flex;
+    gap: 28px;
+    color: var(--ink);
+}
+
+/* HERO HEADLINE */
+.hero-head {
+    font-family: "Kalam-Bold";
+    position: relative;
+    margin-top: -50px;
+    margin-bottom: -40px;
+    font-size: clamp(34px, 6vw, 70px);
+    padding-right: clamp(0px, 4vw, 50px);
+    color: var(--ink);
+}
+
+.eyebrow {
+    font-family: 'Kalam-Bold';
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--coral);
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.eyebrow::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--coral);
+}
+
+h1 {
+    font-family: "Kalam-Bold";
+    font-weight: 600;
+    font-size: clamp(42px, 9.5vw, 138px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    /* the headline occupies the left area of the hero and never spills past
+       it; on narrow screens min() hands the whole column back */
+    max-width: min(620px, 100%);
+}
+
+h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: #181847;
+}
+
+.pastel-text {
+    color: #8EC5D6;
+    margin-left: 0.5em;
+}
+
+.tagline-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: clamp(24px, 7vw, 104px);
+    margin-bottom: clamp(34px, 6vw, 70px);
+    flex-wrap: wrap;
+    gap: clamp(14px, 2vw, 20px);
+}
+
+.tagline {
+    font-family: "Kalam-Bold";
+    font-size: clamp(15px, 2vw, 20px);
+    position: relative;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-transform: uppercase;
+}
+
+.our-story {
+    font-family: "Kalam-Bold";
+    font-size: clamp(15px, 2vw, 20px);
+    position: relative;
+    width: 100%;
+    margin: clamp(12px, 2.5vw, 24px) auto clamp(24px, 5vw, 48px);
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-transform: uppercase;
+}
+
+.os {
+    font-family: "Kalam-Bold";
+    font-size: clamp(16px, 2.4vw, 20px);
+    position: relative;
+    margin-top: clamp(16px, 4vw, 32px);
+}
+
+.op {
+    font-family: "Kalam-Bold";
+    font-size: clamp(16px, 2.4vw, 20px);
+    position: relative;
+    margin-top: clamp(24px, 6vw, 64px);
+}
+
+
+
+.collections {
+    font-family: 'Kalam-Bold';
+    font-size: 35px;
+    position: relative;
+    top: -100px;
+    left: -475px;
+}
+
+
+/* .cta {
+    font-family: 'Kalam-Bold';
+    font-weight: 300;
+    font-size: 14px;
+    position: relative;
+    left: 50%;
+    background: var(--midnight-blue);
+    color: var(--cream);
+    padding: 14px 26px;
+    border-radius: 100px;
+    white-space: nowrap;
+    height: 0px;
+   
+} */
+
+.start{
+    font-family: 'Kalam-Bold';
+    font-weight: 300; 
+    font-size: 15px;
+    background: #191653;
+    color: white;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    position: relative;
+    padding: clamp(13px, 1.6vw, 16px) clamp(20px, 2.6vw, 28px);
+    border-radius: 30px;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+/* OUR JOURNEY BAND
+     A plain in-flow responsive image: it scales with .page, so it can never
+     be wider than the column and never forces a horizontal scrollbar. */
+.journey-band {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.journey-band img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+
+.stats-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: clamp(16px, 4.5vw, 70px);
+    margin: clamp(32px, 6vw, 64px) 0 clamp(32px, 6vw, 64px);
+}
+
+.box {
+    font-family: "Kalam-Bold";
+    font-size: clamp(20px, 2.6vw, 30px);
+    letter-spacing: 0.05em;
+    flex: 1 1 240px;
+    max-width: 320px;
+    min-height: clamp(190px, 21vw, 250px);
+    background: hsl(0, 0%, 98%);
+    padding: clamp(14px, 2vw, 20px);
+    clip-path: polygon(
+        0 0,
+        82% 0,
+        100% 18%,
+        100% 100%,
+        18% 100%,
+        0 82%
+    );
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    line-height: 1.25;
+}
+
+
+.small {
+    font-family: "Waterlily", cursive;
+    font-size: clamp(24px, 3.2vw, 35px);
+    color: var(--ink);
+    margin-top: 10px;
+    text-align: center;
+}
+
+.num {
+    font-family: "Kalam-Bold";
+    font-size: clamp(52px, 7vw, 90px);
+    line-height: 1.1;
+    color: #8EC5D6;
+    margin: 0;
+    text-align: center;
+}
+
+.oc {
+    font-family: "Kalam-Bold";
+    font-size: clamp(22px, 3.2vw, 30px);
+    position: relative;
+    margin-top: clamp(24px, 5vw, 48px);
+}
+.carousel {
+    /* one place to retune the band */
+    --card-w: clamp(150px, 19vw, 250px);
+    --card-h: calc(var(--card-w) * 0.74);
+    --card-gap: clamp(16px, 2.7vw, 34px);
+    /* inner gutter every logo is inset by — this is the room the hover zoom
+       grows into, which is why nothing ever gets clipped by the frame */
+    --card-pad: clamp(12px, 1.9vw, 24px);
+
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    /* breathing room so the hover lift + shadow are never clipped by overflow */
+    padding: clamp(24px, 4vw, 40px) 0 clamp(40px, 6vw, 80px);
+    /* soft edges: cards dissolve in and out instead of being cut by a hard line */
+    -webkit-mask-image: linear-gradient(to right,
+            transparent 0%, #000 12%, #000 88%, transparent 100%);
+    mask-image: linear-gradient(to right,
+            transparent 0%, #000 12%, #000 88%, transparent 100%);
+}
+
+.carousel-track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    /* no `gap` on purpose: the loop offset is exactly -50%, which only lines up
+       if every item carries its own trailing margin (38 items x equal step). */
+    animation: carousel-scroll 50s linear infinite;
+    position: relative;
+}
+
+/* let the reader actually look at the card they hovered */
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+/* fixed frame: every card is identical regardless of the source image's size */
+.carousel-card {
+    flex: 0 0 auto;
+    width: var(--card-w);
+    height: var(--card-h);
+    margin-right: var(--card-gap);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--card-pad);
+    border-radius: 24px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transform: translateZ(0);
+    transition: transform 0.45s cubic-bezier(0.22, 0.61, 0.36, 1),
+                box-shadow 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+}
+
+.carousel-card:hover {
+    transform: translateY(-10px) scale(1.08);
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.22);
+    z-index: 2;
+}
+
+/* `contain`, not `cover`: these are logos — every one must be shown whole.
+   The frame is uniform, the artwork inside is never cropped or stretched. */
+.carousel-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transform: scale(1);
+    transition: transform 0.6s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+}
+
+/* 1.2 here x 1.08 on the card = the logo reads ~30% larger on hover, and
+   1.2 is the most the widest artwork can grow before it meets the frame. */
+.carousel-card:hover .carousel-img {
+    transform: scale(1.2);
+}
+
+@keyframes carousel-scroll {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .carousel-card,
+    .carousel-img {
+        transition: none;
+    }
+}
+
+
+.box-bg {
+  width: 100%;
+  height: 100%;
+  background-image: url('your-image.jpg');
+  background-size: 160% 100%;
+  animation: bgMove 4s ease-in-out infinite alternate;
+}
+
+@keyframes bgMove {
+  0%   { background-position: left center; }
+  100% { background-position: right center; }
+}
+
+.below-box {
+    position: relative;
+    width: 100%;
+    margin: clamp(24px, 5vw, 48px) auto 0;
+}
+
+.below-box img {
+    display: block;
+    width: 100%;
+    max-width: 1100px;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+}
+.stats-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    padding: 100px 20px;
+    flex-wrap: wrap;
+}
+
+/* ROUTE + PHOTO COLLAGE
+     Width is pinned (not inherited from .page) because every photo, pin and
+     the SVG route are anchored to this box — if .page ever changes width, the
+     whole map slides. 503px is the width the collage was hand-tuned against. */
+     
+.route-wrap {
+    font-family: 'Kalam-Bold';
+    font-size: 20px;
+    position: relative;
+    width: 503px;
+    margin: 0 auto;
+    height: 600px;
+    zoom: 80%;
+
+}
+
+svg.route-line {
+    position: absolute;
+    top: 50px;
+    left: 310px;
+    bottom: 0px;
+    right: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: visible;
+}
+
+.photo {
+    position: absolute;
+    border-radius: 14px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 18px 40px -12px rgba(27, 59, 54, 0.35);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(27, 59, 54, 0.35);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    text-align: center;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    padding: 12px;
+}
+
+.p1 {
+    width: 250px;
+    height: 220px;
+    top: 0;
+    left: -350px;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    transform: rotate(-4deg);
+}
+
+.p2 {
+    width: 220px;
+    height: 220px;
+    top: 40px;
+    left: 100px;
+    background: linear-gradient(155deg, var(--gold), #e89a2a);
+    transform: rotate(3deg);
+}
+
+.p3 {
+    width: 300px;
+    height: 230px;
+    top: 0;
+    right: -350px;
+    background: transparent;
+    box-shadow: none;
+    transform: rotate(2deg);
+}
+
+
+.p4 {
+    width: 190px;
+    height: 190px;
+    bottom: 0;
+    left: -150px;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    transform: rotate(-3deg);
+}
+
+.p5 {
+    width: 230px;
+    height: 280px;
+    bottom: 0;
+    right: -350px;
+    background: linear-gradient(155deg, #f6e4c8, var(--gold));
+    transform: rotate(5deg);
+}
+
+.p-image {
+    /* overflow: hidden; */
+    width: 500px;
+    height: 250px;
+    border-radius: 20px;
+    display: block;
+    /* object-fit:fill */
+}
+
+/* MAP PINS */
+.pin {
+    position: absolute;
+    z-index: 4;
+    width: 34px;
+    height: 34px;
+    border-radius: 50% 50% 50% 0;
+    background: var(--ink);
+    transform: rotate(-45deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(27, 59, 54, 0.4);
+    border: 2px solid var(--cream);
+}
+
+.pin span {
+    transform: rotate(45deg);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--cream);
+}
+
+.pin.start {
+    background: var(--coral);
+}
+
+.pin-1 {
+    top: -20px;
+    left: -280px;
+}
+
+.pin-2 {
+    top: 20px;
+    left: 200px;
+}
+
+.pin-3 {
+    top: -14px;
+    right: -220px;
+}
+
+.pin-4 {
+    bottom: 12px;
+    left: -80px;
+}
+
+.pin-5 {
+    bottom: 170px;
+    right: -250px;
+    top: 350px;
+}
+
+.label {
+    position: absolute;
+    z-index: 4;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink);
+    background: var(--cream);
+    padding: 3px 8px;
+    border-radius: 100px;
+    border: 1px solid rgba(27, 59, 54, 0.15);
+    white-space: nowrap;
+}
+
+.label-1 {
+    top: 20px;
+    left: -300px;
+}
+
+.label-5 {
+    bottom: 200px;
+    right: -6px;
+}
+
+/* END FLAG */
+.flag {
+    position: absolute;
+    z-index: 4;
+    bottom: 70px;
+    right: -190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flag-pole {
+    width: 2px;
+    height: 56px;
+    background: var(--ink);
+}
+
+.flag-body {
+    position: absolute;
+    top: 0;
+    left: 2px;
+    background: var(--coral);
+    color: var(--cream);
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 15px;
+    padding: 8px 14px 8px 12px;
+    border-radius: 0 8px 8px 0;
+    white-space: nowrap;
+    box-shadow: 0 6px 14px rgba(27, 59, 54, 0.3);
+}
+
+/* .flag-base{
+    width:14px;height:6px;
+    border-radius:50%;
+    background:rgba(27,59,54,0.25);
+    margin-top:-3px;
+  } */
+/* .arrived-label{
+    position:absolute;
+    bottom:38px; right:190px;
+    font-family:'Space Mono',monospace;
+    font-size:10px;
+    letter-spacing:0.05em;
+    text-transform:uppercase;
+    color:var(--coral);
+    z-index:4;
+  } */
+
+/* footer{
+    margin-top:70px;
+    display:flex;
+    justify-content:space-between;
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:var(--ink);
+    opacity:0.6;
+  } */
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* nothing replaced media may outgrow its column */
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. PAPER TEXTURE & BASE TYPOGRAPHY
+   A subtle grain is applied with a tiled SVG noise data-uri rather than a
+   raster image, so the page stays lightweight and framework-free.
+   -------------------------------------------------------------------------- */
+
+body {
+    background-color: var(--ivory);
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/></filter><rect width='120' height='120' filter='url(%23n)' opacity='0.035'/></svg>");
+    color: var(--brown);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+h1,
+h2,
+h3 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    color: var(--brown);
+}
+
+p {
+    max-width: 60ch;
+}
+
+a {
+    color: inherit;
+}
+
+.gift {
+    /* Title color */
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-align: center;
+    margin-top: 15px;
+    transition: color 0.3s ease;
+    color: #181847;
+}
+
+.service-card:hover .gift {
+    color: #181847;
+}
+
+/* --------------------------------------------------------------------------
+   3. SHARED UTILITY CLASSES
+   -------------------------------------------------------------------------- */
+
+.section-inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.section-inner--narrow {
+    max-width: 720px;
+}
+
+
+.eyebrow {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+.eyebrow--center {
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(26px, 4vw, 40px);
+    line-height: 1.25;
+    margin-bottom: 24px;
+    font-family: "Permanent Marker", cursive;
+    color: #181847;
+}
+
+
+
+
+.section-title--waterlily {
+    font-family: "Waterlily", cursive;
+}
+
+.section-title--center {
+    text-align: center;
+    max-width: 640px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Waterlily — hand-lettered brush script, scoped to the brand mark only
+   (the TTF was referenced but never declared via @font-face, so the family
+   resolved to the generic fallback and never loaded). */
+
+@font-face {
+    font-family: "Kalam-Bold";
+    src: url("fonts/Kalam-Bold.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "waterlily";
+    src: url("./fonts/Waterlily Script.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Handwritten brand mark, reused in the header and footer */
+.brand-mark {
+    font-family: "waterlily", cursive;
+    font-weight: 300px;
+    font-size: clamp(24px, 4.5vw, 34px);
+    color: #181847;
+    text-decoration: none;
+    letter-spacing: 0.3px;
+    line-height: 1;
+}
+
+.brand-mark--footer {
+    font-size: clamp(32px, 6vw, 44px);
+}
+
+/* Premium pill button */
+.btn {
+    display: inline-block;
+    padding: 16px 40px;
+    border-radius: 999px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+}
+
+.btn--primary {
+    background-color: var(--terracotta);
+    color: var(--ivory);
+    border: 1px solid var(--terracotta);
+}
+
+.btn--primary:hover {
+    background-color: transparent;
+    color: var(--terracotta);
+    transform: translateY(-3px);
+}
+
+/* Understated text link with an animated underline */
+.text-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: var(--forest);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+.text-link:hover {
+    border-color: var(--forest);
+}
+
+.text-link--center {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. HEADER & NAVIGATION
+   -------------------------------------------------------------------------- */
+
+.site-header {
+    position: fixed;
+    top: 0%;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background-color: transparent;
+    padding: 30px 0;
+}
+
+.site-header__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.main-nav ul {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+}
+
+.main-nav a {
+    font-family: Kalam-Bold;
+    font-size: 17px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--midnight-blue);
+    position: relative;
+    left: 10%;
+    top: 100%;
+    padding-bottom: 7px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: var(--terracotta);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. HERO
+   -------------------------------------------------------------------------- */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+    padding-top: clamp(24px, 2.6vw, 40px);
+}
+
+.hero__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.hero__copy {
+    animation: fade-up 1s ease-out both;
+}
+
+.hero__heading {
+    font-family: "waterlily", cursive;
+    font-weight: 700;
+    font-size: clamp(44px, 8vw, 96px);
+    line-height: 0.95;
+    color: var(--midnight-blue);
+    margin-bottom: 28px;
+}
+
+.hero__subtitle {
+    font-size: 18px;
+    color: var(--brown);
+    opacity: 0.75;
+    max-width: 42ch;
+    margin-bottom: 40px;
+}
+
+.hero__art {
+    animation: fade-up 1.2s ease-out 0.2s both;
+}
+
+.hero__art svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Two soft floating ribbon shapes that drift gently behind the hero */
+.hero__ribbon {
+    position: absolute;
+    border-radius: 40% 60% 55% 45% / 55% 45% 60% 40%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.hero__ribbon--one {
+    width: 260px;
+    height: 260px;
+    background-color: var(--sage);
+    top: 10%;
+    right: -80px;
+    animation: float-ribbon 9s ease-in-out infinite;
+}
+
+.hero__ribbon--two {
+    width: 180px;
+    height: 180px;
+    background-color: var(--beige);
+    bottom: 6%;
+    left: -60px;
+    animation: float-ribbon 11s ease-in-out infinite 1.5s;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. SERVICES — four handcrafted circular icons
+   -------------------------------------------------------------------------- */
+
+.services {
+    padding: 60px 0 100px;
+}
+
+.services__grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    text-align: center;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-8px);
+}
+
+.service-card__icon {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border-radius: 20px;
+
+
+}
+
+.service-card__icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.icon-ring {
+    fill: var(--beige);
+    stroke: var(--terracotta);
+    stroke-width: 1.5;
+}
+
+.icon-line {
+    fill: none;
+    stroke: var(--forest);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+}
+
+.icon-line-fill {
+    fill: var(--forest);
+    opacity: 0.85;
+}
+
+.service-card h3 {
+    font-size: 17px;
+    font-weight: 500;
+}
+
+
+/* --------------------------------------------------------------------------
+   7. FEATURED COLLECTION — asymmetrical alternating rows
+   -------------------------------------------------------------------------- */
+
+.featured {
+    padding: 40px 0 100px;
+}
+
+.featured .section-inner {
+    margin-bottom: 60px;
+}
+
+.feature-row {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+    gap: 0;
+    max-width: var(--max-width);
+    margin: 0 auto 90px;
+    padding: 0 clamp(20px, 5vw, 60px);
+}
+
+.feature-row__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px;
+}
+
+.detail-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 16px;
+    margin-bottom: 15px;
+}
+
+.feature-row--reverse {
+    grid-template-columns: 2fr 3fr;
+}
+
+.feature-row--reverse .feature-row__media {
+    order: 2;
+}
+
+.feature-row--reverse .feature-row__copy {
+    order: 1;
+    padding-right: clamp(24px, 5vw, 60px);
+    padding-left: 0;
+}
+
+.feature-row__media {
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(64, 54, 47, 0.12);
+}
+
+/* Placeholder flat lay panels. Replace with real photographed flat lays;
+   the warm tint and label communicate intended content until then. */
+.media-placeholder {
+    display: block;
+    aspect-ratio: 4 / 3;
+    background-color: var(--beige);
+    position: relative;
+    transition: transform 0.6s ease;
+}
+
+.feature-row__media:hover .media-placeholder {
+    transform: scale(1.03);
+}
+
+.media-placeholder--birthday {
+    background-color: #efd9c8;
+}
+
+.media-placeholder--wedding {
+    background-color: #e6e6dc;
+}
+
+.media-placeholder--festival {
+    background-color: hsl(0, 0%, 0%);
+}
+
+.feature-row__copy {
+    padding-left: clamp(24px, 5vw, 60px);
+}
+
+.feature-row__copy h3 {
+    font-size: 30px;
+    margin-bottom: 16px;
+}
+
+.feature-row__copy p {
+    margin-bottom: 20px;
+    color: var(--brown);
+    opacity: 0.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. ABOUT / OUR STORY
+   -------------------------------------------------------------------------- */
+
+.about {
+    background-color: var(--beige);
+    padding: clamp(56px, 9vw, 100px) 0;
+}
+
+.about__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.about__art svg {
+    width: 100%;
+    height: auto;
+}
+
+.about__copy p {
+    margin-bottom: 18px;
+    opacity: 0.85;
+}
+
+
+/* --------------------------------------------------------------------------
+   9. WHY SHOTS OF JOY — four premium cards
+   -------------------------------------------------------------------------- */
+
+.why-us {
+    padding: clamp(56px, 9vw, 110px) 0;
+}
+
+.why-us__grid {
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.why-card {
+    background: #fff;
+    padding: 32px;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .08);
+    overflow: hidden;
+}
+
+.why-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.why-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 45px rgba(64, 54, 47, 0.1);
+}
+
+.why-card__number {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--terracotta);
+    display: block;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.why-card p {
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. GIFT CATEGORIES
+   -------------------------------------------------------------------------- */
+
+.categories {
+    background-color: var(--forest);
+    padding: clamp(56px, 9vw, 110px) 0;
+}
+
+.categories .eyebrow {
+    color: var(--sage);
+}
+
+.categories .section-title {
+    color: var(--ivory);
+}
+
+.categories__grid {
+    margin-top: 50px;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.category-chip {
+    padding: 14px 30px;
+    border: 1px solid rgba(248, 245, 238, 0.35);
+    border-radius: 999px;
+    color: var(--ivory);
+    font-size: 14px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.category-chip:hover {
+    background-color: var(--ivory);
+    color: var(--forest);
+}
+
+
+/* --------------------------------------------------------------------------
+   11. TESTIMONIAL
+   -------------------------------------------------------------------------- */
+
+.testimonial {
+    padding: clamp(64px, 11vw, 130px) 0;
+    text-align: center;
+}
+
+.testimonial__mark {
+    font-family: var(--font-serif);
+    font-size: 90px;
+    color: var(--terracotta);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+.testimonial blockquote p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(19px, 2.6vw, 28px);
+    line-height: 1.5;
+    color: var(--brown);
+    margin: 0 auto 24px;
+}
+
+.testimonial footer {
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--forest);
+}
+
+
+/* --------------------------------------------------------------------------
+   12. JOURNAL TEASER
+   -------------------------------------------------------------------------- */
+
+.journal {
+    background-color: var(--beige);
+    padding: clamp(56px, 9vw, 110px) 0;
+    text-align: center;
+}
+
+.journal__intro {
+    margin: 0 auto;
+    opacity: 0.8;
+}
+
+
+/* --------------------------------------------------------------------------
+   13. FOOTER
+   -------------------------------------------------------------------------- */
+
+.site-footer {
+    background-color: var(--brown);
+    color: var(--ivory);
+    padding: clamp(56px, 9vw, 100px) 0 30px;
+}
+
+.site-footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 clamp(20px, 5vw, 60px);
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 0.8fr;
+    gap: 60px;
+}
+
+.footer-logo {
+    display: block;
+    width: clamp(120px, 26vw, 200px);
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    margin-top: 12px;
+}
+
+.footer-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 15px;
+    opacity: 0.75;
+    margin-top: 6px;
+}
+
+.footer-newsletter h3 {
+    color: var(--ivory);
+    font-size: 18px;
+    margin-bottom: 12px;
+}
+
+.footer-newsletter p {
+    font-size: 14px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.newsletter-form input {
+    flex: 1 1 180px;
+    min-width: 0;
+    padding: 12px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(248, 245, 238, 0.3);
+    background-color: transparent;
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    font-size: 13px;
+}
+
+.newsletter-form input::placeholder {
+    color: rgba(248, 245, 238, 0.55);
+}
+
+.newsletter-form button {
+    flex: 0 0 auto;
+    padding: 12px 24px;
+    border-radius: 999px;
+    border: none;
+    background-color: var(--terracotta);
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #a04f2e;
+}
+
+.footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.footer-social a {
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.footer-social a:hover {
+    opacity: 1;
+}
+
+.site-footer__base {
+    max-width: var(--max-width);
+    margin: clamp(36px, 6vw, 60px) auto 0;
+    padding: 24px clamp(20px, 5vw, 60px) 0;
+    border-top: 1px solid rgba(248, 245, 238, 0.15);
+    font-size: 12px;
+    opacity: 0.6;
+    text-align: center;
+}
+
+
+/* --------------------------------------------------------------------------
+   14. ILLUSTRATION COLOR CLASSES
+   Shared fills for the inline hand-drawn SVG illustrations used in the
+   hero and about sections.
+   -------------------------------------------------------------------------- */
+
+.art-bg {
+    fill: var(--beige);
+}
+
+.art-bg--sage {
+    fill: var(--sage);
+}
+
+.art-box {
+    stroke: var(--brown);
+    stroke-width: 1.5;
+}
+
+.art-box--terracotta {
+    fill: var(--terracotta);
+}
+
+.art-box--sage {
+    fill: var(--sage);
+}
+
+.art-box-lid {
+    fill: var(--ivory);
+    opacity: 0.6;
+}
+
+.art-box-lid--dark {
+    fill: var(--brown);
+    opacity: 0.15;
+}
+
+.art-ribbon {
+    fill: var(--beige);
+}
+
+.art-ribbon--ivory {
+    fill: var(--ivory);
+}
+
+.art-ribbon-loop {
+    fill: none;
+    stroke: var(--beige);
+    stroke-width: 6;
+    stroke-linecap: round;
+}
+
+.art-flower-center {
+    fill: var(--terracotta);
+}
+
+.art-flower-center--small {
+    fill: var(--forest);
+}
+
+.art-petals ellipse {
+    fill: var(--sage);
+}
+
+.art-candle {
+    fill: var(--ivory);
+    stroke: var(--brown);
+    stroke-width: 1;
+}
+
+.art-flame {
+    fill: none;
+    stroke: var(--terracotta);
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.art-wood {
+    fill: #c9975a;
+}
+
+.art-figure {
+    fill: var(--brown);
+    opacity: 0.85;
+}
+
+.art-table {
+    fill: var(--brown);
+    opacity: 0.5;
+}
+
+
+/* --------------------------------------------------------------------------
+   15. ANIMATIONS
+   -------------------------------------------------------------------------- */
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float-ribbon {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-20px) rotate(6deg);
+    }
+}
+
+
+/* --------------------------------------------------------------------------
+   16. RESPONSIVE BREAKPOINTS
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1080px) {
+    .hero__heading {
+        font-size: 76px;
+    }
+
+    .why-us__grid,
+    .services__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .site-footer__inner {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .site-header__inner,
+    .hero__inner,
+    .about__inner {
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+
+    .hero__inner,
+    .about__inner {
+        grid-template-columns: 1fr;
+    }
+
+    .hero__art {
+        order: -1;
+    }
+
+    .feature-row,
+    .feature-row--reverse {
+        grid-template-columns: 1fr;
+        padding: 0 30px;
+    }
+
+    .feature-row--reverse .feature-row__media,
+    .feature-row--reverse .feature-row__copy {
+        order: 0;
+    }
+
+    .feature-row__copy,
+    .feature-row--reverse .feature-row__copy {
+        padding: 30px 0 0;
+    }
+}
+
+@media (max-width: 720px) {
+    .hero__heading {
+        font-size: 58px;
+    }
+
+    .services__grid,
+    .why-us__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer__inner {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .section-inner {
+        padding: 0 24px;
+    }
+
+}
+
+
+/* ==========================================================================
+   17. MOBILE NAVIGATION TOGGLE
+   A CSS-only disclosure (checkbox + label) so the primary nav stays usable
+   on phones instead of being hidden. No JavaScript is introduced.
+   ========================================================================== */
+
+.nav-toggle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.nav-toggle-label {
+    display: none;
+}
+
+
+/* ==========================================================================
+   18. FLUID LAYOUT BREAKPOINTS
+   One layout, five stops: 1200 / 992 / 768 / 576 / 400.
+   ========================================================================== */
+
+/* ---- Large desktop: restore the original hand-tuned outdents, which only
+        fit once the viewport is wide enough to absorb them ---------------- */
+@media (min-width: 1360px) {
+
+    .hero-head h1 {
+        margin-left: -0.5em;
+    }
+
+    /* the logo band bleeds into the page gutter, as it did originally */
+    .carousel {
+        width: calc(100% + 80px);
+        margin-left: -40px;
+    }
+}
+
+/* ---- 1200px — small laptops -------------------------------------------- */
+@media (max-width: 1200px) {
+
+    .stats-row {
+        gap: clamp(16px, 3.5vw, 44px);
+    }
+
+    .journey-band,
+    .below-box img {
+        max-width: 100%;
+    }
+}
+
+/* ---- 992px — tablets: nav collapses into the toggle --------------------- */
+@media (max-width: 992px) {
+
+    .site-header__inner {
+        position: relative;
+    }
+
+    .nav-toggle-label {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 6px;
+        width: 44px;
+        height: 44px;
+        padding: 8px;
+        margin-left: auto;
+        cursor: pointer;
+        background: none;
+        border: none;
+    }
+
+    .nav-toggle-label span {
+        display: block;
+        width: 28px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: var(--midnight-blue);
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .nav-toggle:focus-visible + .nav-toggle-label {
+        outline: 2px solid var(--coral);
+        outline-offset: 4px;
+    }
+
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle:checked + .nav-toggle-label span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .main-nav {
+        flex: 0 0 100%;
+        max-height: 0;
+        overflow: hidden;
+        padding-bottom: 0;
+        transition: max-height 0.35s ease;
+    }
+
+    .nav-toggle:checked ~ .main-nav {
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+
+    .main-nav ul {
+        /* the parent is a flex row (global `nav` rule), so the list would
+           otherwise shrink to its widest label */
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 4px 0 12px;
+    }
+
+    .main-nav li + li {
+        border-top: 1px solid rgba(24, 24, 71, 0.12);
+    }
+
+    /* the desktop rule nudges each link with left:10%/top:100%; in a stacked
+       menu that would push every item out of its row */
+    .main-nav a {
+        left: auto;
+        top: auto;
+        display: block;
+        padding: 14px 2px;
+        font-size: clamp(14px, 2.4vw, 17px);
+    }
+
+    .stats-row {
+        gap: clamp(16px, 3vw, 32px);
+    }
+
+    .box {
+        flex: 1 1 220px;
+        max-width: 280px;
+    }
+}
+
+/* ---- 768px — large phones / small tablets ------------------------------- */
+@media (max-width: 768px) {
+
+    .hero {
+        min-height: auto;
+        padding-top: clamp(24px, 6vw, 48px);
+    }
+
+    /* the desktop headline offsets are fixed pixel values tuned against a
+       138px headline; at phone sizes the type is ~42px, so -40px of negative
+       bottom margin pulls the tagline up into the descenders */
+    .hero-head {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    .tagline-row {
+        align-items: flex-start;
+        margin-bottom: clamp(28px, 6vw, 48px);
+    }
+
+    /* two per row; the third wraps at the same width instead of stretching */
+    .box {
+        flex: 1 1 240px;
+        max-width: calc(50% - 12px);
+        min-height: 0;
+        padding: clamp(18px, 4vw, 24px);
+    }
+
+    .site-footer {
+        padding: clamp(48px, 10vw, 72px) 0 24px;
+    }
+
+    .site-footer__inner {
+        grid-template-columns: 1fr;
+        gap: clamp(28px, 6vw, 40px);
+    }
+
+    .footer-social {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+    }
+
+    /* comfortable tap targets on touch screens */
+    a.brand-mark,
+    .footer-social a {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+    }
+}
+
+/* ---- 576px — phones ----------------------------------------------------- */
+@media (max-width: 576px) {
+
+    .tagline-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .tagline-row a {
+        width: 100%;
+    }
+
+    /* keep the primary action a comfortable tap target */
+    .start {
+        width: 100%;
+        min-height: 48px;
+        font-size: 15px;
+    }
+
+    .stats-row {
+        gap: 18px;
+        margin: clamp(24px, 7vw, 40px) 0;
+    }
+
+    .box {
+        flex: 1 1 100%;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .carousel {
+        --card-w: clamp(140px, 42vw, 190px);
+        --card-gap: 16px;
+        /* soften the fade so a card is never masked away entirely */
+        -webkit-mask-image: linear-gradient(to right,
+                transparent 0%, #000 8%, #000 92%, transparent 100%);
+        mask-image: linear-gradient(to right,
+                transparent 0%, #000 8%, #000 92%, transparent 100%);
+    }
+
+    .newsletter-form input,
+    .newsletter-form button {
+        flex: 1 1 100%;
+    }
+
+    .footer-social {
+        gap: 12px 20px;
+    }
+}
+
+/* ---- 400px — small phones ---------------------------------------------- */
+@media (max-width: 400px) {
+
+    .page {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .site-header__inner {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+
+    .site-footer__inner,
+    .site-footer__base {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .carousel {
+        --card-w: clamp(132px, 46vw, 170px);
+        --card-pad: 10px;
+    }
+
+    .carousel-card {
+        border-radius: 18px;
+    }
+
+    .box {
+        padding: 16px;
+    }
+}
+
+/* ---- Touch devices: hover lifts never trigger, so make sure the resting
+        state is the readable one --------------------------------------- */
+@media (hover: none) {
+
+    .carousel-track {
+        animation-duration: 38s;
+    }
+}
+
+/* ==========================================================================
+   19. START A ROUTE — "Stay in the loop" enquiry page
+   A centred single column: logo, wordmark, panel, then the copyright rule.
+   Everything is scoped behind .route-* so the shared footer markup on
+   index.html keeps its original newsletter block untouched.
+   The vertical rhythm is sized in vh so the page collapses to fit a short
+   laptop viewport instead of spilling into a scroll.
+   ========================================================================== */
+
+/* PAGE SHELL — the brown ground runs edge to edge, so the back button sits
+   on it rather than on a separate cream strip */
+.route-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--brown);
+    color: var(--ivory);
+}
+
+.route-page > header {
+    flex: 0 0 auto;
+    padding: 2px 6px;
+}
+
+.route-page .back {
+    font-size: clamp(20px, 3.4vw, 28px);
+    padding: 6px 10px;
+    color: var(--ivory);
+    opacity: 0.85;
+    transition: opacity 0.3s ease;
+}
+
+.route-page .back:hover {
+    opacity: 1;
+}
+
+.route-page .route-footer {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(6px, 2vh, 28px) 0 clamp(6px, 1.6vh, 18px);
+}
+
+/* an auto left/right margin would cancel the flex stretch and shrink these
+   to their content width, so pin them to the full row instead */
+.route-page .route-footer .site-footer__inner,
+.route-page .site-footer__base {
+    width: 100%;
+}
+
+/* branding column on the left, panel on the right; align-items centres the
+   brand block against the panel it sits beside */
+.route-footer .site-footer__inner {
+    display: grid;
+    grid-template-columns: minmax(180px, 0.95fr) minmax(0, 2.3fr);
+    align-items: center;
+    gap: clamp(18px, 3vw, 48px);
+    max-width: 1120px;
+}
+
+/* BRANDING — logo + wordmark inside their own bordered box.
+   container-type lets the logo and wordmark be sized as a percentage of the
+   BOX rather than the viewport, so they can never outgrow it at any width. */
+.route-brand {
+    container-type: inline-size;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: clamp(4px, 1vh, 12px);
+    padding: clamp(16px, 2.6vh, 28px) clamp(12px, 1.4vw, 20px);
+    border: 1px solid rgba(248, 245, 238, 0.22);
+    border-radius: 22px;
+}
+
+.route-brand p {
+    margin: 0;
+    max-width: none;
+}
+
+.route-footer .footer-logo {
+    width: min(62cqw, clamp(64px, 13vh, 132px));
+    margin-top: 0;
+}
+
+/* the wordmark reads in cream on the brown ground, not the navy it uses
+   against the light pages */
+.route-footer .brand-mark--footer {
+    font-size: min(19cqw, clamp(26px, 5vh, 50px));
+    max-width: 100%;
+    color: var(--ivory);
+}
+
+
+/* THE BORDERED PANEL */
+.route-panel {
+    width: 100%;
+    padding: clamp(14px, 2.6vh, 32px) clamp(18px, 2.4vw, 34px);
+    border: 1px solid rgba(248, 245, 238, 0.22);
+    border-radius: 22px;
+}
+
+
+
+/* FORM GRID — two columns while there is room, one column on phones */
+.route-form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(8px, 1.5vh, 16px) clamp(14px, 2.2vw, 24px);
+}
+
+.route-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.route-form__field label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+    opacity: 0.75;
+}
+
+.route-form__field input {
+    width: 100%;
+    min-width: 0;
+    padding: clamp(9px, 1.2vh, 12px) 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(248, 245, 238, 0.3);
+    background-color: transparent;
+    color: var(--ivory);
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.3;
+    transition: border-color 0.3s ease;
+}
+
+.route-form__field input::placeholder {
+    color: rgba(248, 245, 238, 0.55);
+}
+
+
+
+
+.route-form__field input:hover {
+    border-color: rgba(248, 245, 238, 0.5);
+}
+
+.route-form__field input:focus-visible {
+    outline: none;
+    border-color: var(--terracotta);
+}
+
+/* :user-invalid, not :invalid — a required field must not be flagged red
+   before the visitor has actually had a go at filling it in */
+.route-form__field input:user-invalid {
+    border-color: var(--terracotta);
+}
+
+/* SUBMISSION STATUS — success / error feedback under the fields */
+.route-form__status {
+    grid-column: 1 / -1;
+    margin: clamp(4px, 1vh, 10px) 0 0;
+    padding: 10px 16px;
+    border-radius: 14px;
+    border: 1px solid transparent;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    line-height: 1.5;
+    max-width: none;
+}
+
+.route-form__status.is-success {
+    color: var(--ivory);
+    border-color: rgba(201, 208, 191, 0.55);
+    background-color: rgba(201, 208, 191, 0.14);
+}
+
+.route-form__status.is-error {
+    color: var(--ivory);
+    border-color: rgba(232, 84, 46, 0.6);
+    background-color: rgba(232, 84, 46, 0.14);
+}
+
+/* a field the server rejected */
+.route-form__field input[aria-invalid="true"] {
+    border-color: var(--terracotta);
+}
+
+/* the button reads SUBMITTING... mid-flight */
+.route-form__submit[disabled] {
+    opacity: 0.65;
+    cursor: progress;
+    transform: none;
+}
+
+/* ACTION ROW — the submit keeps its right-hand position */
+.route-form__actions {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: clamp(12px, 2vw, 24px);
+    margin-top: clamp(6px, 1.6vh, 18px);
+}
+
+.route-form__submit {
+    padding: clamp(11px, 1.5vh, 15px) clamp(26px, 3vw, 40px);
+    border-radius: 999px;
+    border: none;
+    background-color: var(--terracotta);
+    color: var(--ivory);
+    font-family: 'Kalam-Bold', var(--font-sans);
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.route-form__submit:hover {
+    background-color: #a04f2e;
+    transform: translateY(-2px);
+}
+
+
+.route-page .site-footer__base {
+    margin: clamp(6px, 1.6vh, 22px) auto 0;
+    padding-top: 10px;
+}
+
+.route-page .site-footer__base p {
+    max-width: none;
+}
+
+/* ---- 992px: branding stacks above the panel ------------------------- */
+@media (max-width: 992px) {
+
+    .route-footer .site-footer__inner {
+        grid-template-columns: minmax(0, 1fr);
+        max-width: 720px;
+    }
+
+    /* the brand box is a size container whose children are sized in cqw, so
+       it must never shrink-wrap its content — that is circular and collapses
+       the box. Give it a definite width and centre it with auto margins. */
+    .route-brand {
+        align-self: auto;
+        width: 100%;
+        max-width: 340px;
+        margin: 0 auto;
+    }
+
+    .route-panel {
+        max-width: 720px;
+    }
+}
+
+/* ---- 768px ----------------------------------------------------------- */
+@media (max-width: 768px) {
+
+    .route-form__field input {
+        min-height: 44px;
+    }
+}
+
+/* ---- 576px: single-column form -------------------------------------- */
+@media (max-width: 576px) {
+
+    .route-form {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .route-form__actions {
+        justify-content: center;
+    }
+
+
+    .route-form__submit {
+        width: 100%;
+        min-height: 48px;
+    }
+}
+
+/* ---- Short viewports (small laptops, 150% display scaling).
+        The page is meant to sit in one screen, so trim the decorative
+        vertical space rather than let a six-field form start scrolling. --- */
+@media (max-height: 720px) {
+
+    .route-page > header {
+        padding: 0 4px;
+    }
+
+    .route-page .back {
+        font-size: 20px;
+        padding: 2px 8px;
+    }
+
+    /* the brand box stretches to the panel height, so it no longer drives
+       the page height — keep these sized against the box, not the viewport */
+    .route-footer .footer-logo {
+        width: min(56cqw, 88px);
+    }
+
+    .route-footer .brand-mark--footer {
+        font-size: min(18cqw, 34px);
+    }
+
+
+
+
+    .route-footer .site-footer__inner {
+        gap: 8px;
+    }
+
+    .route-form__actions {
+        margin-top: 2px;
+    }
+
+    .route-page .site-footer__base {
+        margin-top: 4px;
+        padding-top: 6px;
+    }
+}

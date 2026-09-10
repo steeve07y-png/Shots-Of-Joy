@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Route - Shots of Joy</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="route-page">
+
+    <header>
+        <button class="back" onclick="history.back()"> &#8678;back to joy</button>
+    </header>
+
+ <footer class="site-footer route-footer" id="contact">
+        <div class="site-footer__inner">
+
+            <!-- logo above the wordmark -->
+            <div class="footer-brand route-brand">
+                <img class="footer-logo" src="images/footer.png" alt="">
+                <p class="brand-mark brand-mark--footer">Shots of Joy</p>
+            </div>
+
+            <div class="footer-newsletter route-panel">
+
+                <form class="route-form" action="#" method="post" novalidate>
+                    <div class="route-form__field">
+                        <label for="route-name">Name</label>
+                        <input id="route-name" name="name" type="text" placeholder="Your name" autocomplete="name"
+                            required>
+                    </div>
+
+                    <div class="route-form__field">
+                        <label for="route-organisation">Organisation</label>
+                        <input id="route-organisation" name="organisation" type="text" placeholder="Your organisation"
+                            autocomplete="organization" required>
+                    </div>
+
+                    <div class="route-form__field">
+                        <label for="route-occasion">Gifting Occasion</label>
+                        <input id="route-occasion" name="occasion" type="text" placeholder="Enter gifting occasion" required>
+                    </div>
+
+                    <div class="route-form__field">
+                        <label for="route-quantity">Quantity</label>
+                        <input id="route-quantity" name="quantity" type="number" min="1" step="1" inputmode="numeric"
+                            placeholder="Enter quantity" required>
+                    </div>
+
+                    <div class="route-form__field">
+                        <label for="route-phone">Contact Number</label>
+                        <input id="route-phone" name="contact_number" type="tel" inputmode="tel"
+                            placeholder="Your contact number" autocomplete="tel" required>
+                    </div>
+
+                    <div class="route-form__field">
+                        <label for="route-email">Contact Mail Address</label>
+                        <input id="route-email" name="email" type="email" placeholder="Your email address"
+                            autocomplete="email" required>
+                    </div>
+
+                    <p class="route-form__status" role="status" aria-live="polite" hidden></p>
+
+                    <div class="route-form__actions">
+                        <button class="route-form__submit" type="submit">SUBMIT</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="site-footer__base">
+            <p>&copy; 2026 Shots of Joy. All rights reserved.</p>
+        </div>
+    </footer>
+
+<style>
+.back{
+    font-family: "Waterlily", cursive;
+    font-size: clamp(24px, 5vw, 35px);
+    padding: 10px;
+    border: none;
+    background-color: #ffffff00;
+    color: var(--midnight-blue);
+    cursor: pointer;
+}
+
+
+
+</style>
+
+
+
+<script type="importmap">
+{
+  "imports": {
+    "@emailjs/browser": "https://cdn.jsdelivr.net/npm/@emailjs/browser@4.4.1/+esm"
+  }
+}
+</script>
+<script type="module" src="start-a-route.js"></script>
+
+</body>
+
+</html>
